@@ -1,0 +1,183 @@
+/* Job Header Card with Company Info */
+.job-header-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 0 16px 16px;
+  padding: 16px;
+}
+
+.company-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eee;
+}
+
+.company-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.company-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+}
+
+.company-name svg {
+  margin-right: 8px;
+  color: #0077b5;
+}
+
+.job-quick-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.job-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f0f2f5;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #65676b;
+}
+
+.job-badge svg {
+  margin-right: 6px;
+}
+
+.job-type-badge {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.job-type-badge svg {
+  color: #2e7d32;
+}
+
+.job-location-badge {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.job-location-badge svg {
+  color: #1565c0;
+}
+
+.job-salary-badge {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+}
+
+.job-salary-badge svg {
+  color: #6a1b9a;
+}
+
+/* Section titles with icons */
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #1a1a1a;
+}
+
+.section-icon {
+  margin-right: 8px;
+  color: #1877f2;
+}
+
+/* Job application buttons */
+.job-application-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 16px 16px;
+}
+
+.apply-button,
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.apply-button {
+  background-color: #0077b5;
+  color: white;
+  flex: 1;
+}
+
+.apply-button:hover {
+  background-color: #006699;
+  text-decoration: none;
+  color: white;
+}
+
+.contact-button {
+  background-color: #f0f2f5;
+  color: #1a1a1a;
+}
+
+.contact-button:hover {
+  background-color: #e4e6eb;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.apply-button svg,
+.contact-button svg {
+  margin-right: 8px;
+}
+
+/* Job description and requirements text */
+.job-description-text,
+.job-requirements-text {
+  white-space: pre-line;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .job-application-buttons {
+    flex-direction: column;
+  }
+
+  .company-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .company-logo {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .job-quick-info {
+    justify-content: center;
+  }
+}

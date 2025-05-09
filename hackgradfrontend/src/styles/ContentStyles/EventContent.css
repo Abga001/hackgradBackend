@@ -1,0 +1,97 @@
+/* Event Details Card */
+.event-details-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 0 16px 16px;
+  padding: 16px;
+}
+
+.event-detail-item {
+  display: flex;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.event-detail-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.event-icon {
+  font-size: 20px;
+  color: #1877f2;
+  margin-right: 16px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-detail-content {
+  flex: 1;
+}
+
+.event-detail-label {
+  font-weight: 600;
+  color: #65676b;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.event-detail-value {
+  font-size: 15px;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.virtual-badge {
+  display: inline-block;
+  background-color: #e1f5fe;
+  color: #0288d1;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.event-registration-button {
+  text-align: center;
+  padding: 0 16px 20px;
+}
+
+.registration-btn {
+  display: inline-block;
+  background-color: #1877f2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.registration-btn:hover {
+  background-color: #166fe5;
+  text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .book-detail-item,
+  .event-detail-item {
+    flex-direction: column;
+  }
+
+  .detail-label,
+  .event-detail-label {
+    margin-bottom: 4px;
+  }
+
+  .event-icon {
+    margin-bottom: 8px;
+    margin-right: 0;
+  }
+}

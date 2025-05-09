@@ -1,0 +1,337 @@
+/* ContentCard.css - Styling for the reusable content card component */
+
+.content-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Repost indicator styling */
+.repost-indicator {
+  background-color: #f8f9fa;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #555;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.repost-icon {
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+/* Card header with user profile */
+.card-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.creator-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.creator-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.creator-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #eee;
+  background-color: #f2f2f2;
+}
+
+.creator-details {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.creator-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.post-date {
+  font-size: 12px;
+  color: #777;
+  margin-top: 2px;
+}
+
+.content-type-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1976d2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  background-color: #e3f2fd;
+  border-radius: 4px;
+}
+
+/* Card body styling */
+.card-body {
+  padding: 16px;
+  cursor: pointer;
+}
+
+.card-title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+}
+
+.card-image-container {
+  margin: 0 -16px;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-image:hover {
+  transform: scale(1.03);
+}
+
+.card-description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.read-more {
+  color: #1976d2;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Card footer with social interaction buttons */
+.card-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+  background-color: #f9f9f9;
+}
+
+.interaction-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.interaction-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 4px;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.interaction-button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.interaction-button.active {
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.button-icon {
+  font-size: 16px;
+}
+
+.like-button.active .button-icon {
+  color: #4caf50;
+}
+
+.dislike-button.active .button-icon {
+  color: #f44336;
+}
+
+.save-button.active .button-icon {
+  color: #ff9800;
+}
+
+.repost-button.active .button-icon {
+  color: #2196f3;
+}
+
+.interaction-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-prompt {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+.login-prompt a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-prompt a:hover {
+  text-decoration: underline;
+}
+
+/* Repost Modal Styling */
+.repost-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.repost-modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.repost-modal h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.repost-modal textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-button {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  color: #555;
+}
+
+.cancel-button:hover {
+  background-color: #e5e5e5;
+}
+
+.repost-button {
+  background-color: #1976d2;
+  border: 1px solid #1976d2;
+  color: white;
+}
+
+.repost-button:hover {
+  background-color: #1565c0;
+}
+
+.modal-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .interaction-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .button-group {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .interaction-button {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .creator-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-image-container {
+    height: 160px;
+  }
+}

@@ -1,0 +1,93 @@
+/* Additional CSS for Project Content - Add to ContentPage.css */
+
+/* Project Description */
+.project-description-text {
+  line-height: 1.6;
+  font-size: 15px;
+  color: #1a1a1a;
+}
+
+/* Project Technologies Section */
+.project-tech-section {
+  margin: 0 16px 16px;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.tech-tag {
+  background-color: #ebf5ff;
+  color: #0077b5;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d0e8ff;
+}
+
+/* Project Links */
+.project-links-container {
+  margin: 0 16px 16px;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.repo-link {
+  background-color: #24292e;
+  color: white;
+}
+
+.repo-link:hover {
+  background-color: #1b1f23;
+  text-decoration: none;
+  color: white;
+}
+
+.demo-link {
+  background-color: #0077b5;
+  color: white;
+}
+
+.demo-link:hover {
+  background-color: #005e92;
+  text-decoration: none;
+  color: white;
+}
+
+.project-link svg {
+  margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .project-links {
+    flex-direction: column;
+  }
+
+  .project-link {
+    text-align: center;
+    justify-content: center;
+  }
+}

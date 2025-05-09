@@ -1,0 +1,188 @@
+.cv-empty-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.cv-empty-state-content {
+  max-width: 700px;
+}
+
+.cv-empty-illustration {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 24px;
+  object-fit: contain;
+}
+
+.cv-empty-state-container h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.cv-empty-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.cv-empty-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.cv-create-button {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.cv-create-button.primary {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: white;
+  box-shadow: 0 4px 10px rgba(78, 84, 200, 0.3);
+}
+
+.cv-create-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(78, 84, 200, 0.4);
+}
+
+.cv-empty-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.cv-empty-option {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f9ff;
+  border: 1px solid #e0e3ff;
+  text-align: left;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.cv-empty-option:hover {
+  background-color: #eef0ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cv-option-icon {
+  font-size: 1.5rem;
+  color: #4e54c8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(78, 84, 200, 0.1);
+  border-radius: 8px;
+}
+
+.cv-option-content {
+  flex: 1;
+}
+
+.cv-option-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.cv-option-content p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.cv-empty-benefits {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.cv-empty-benefits h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.cv-benefits-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.cv-benefit-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cv-benefit-icon {
+  color: #4caf50;
+  font-size: 1.1rem;
+}
+
+.cv-benefit-item p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .cv-empty-state-container {
+    padding: 20px;
+  }
+
+  .cv-empty-illustration {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cv-empty-state-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .cv-empty-description {
+    font-size: 1rem;
+  }
+
+  .cv-benefits-list {
+    grid-template-columns: 1fr;
+  }
+}

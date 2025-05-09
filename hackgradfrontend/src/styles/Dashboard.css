@@ -1,0 +1,596 @@
+/* Dashboard.css */
+
+/* Dashboard Container */
+.dashboard {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+/* Search Container */
+.dashboard-search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Common Input Styles for consistency */
+.common-input-style {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.common-input-style:focus {
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.1);
+}
+
+/* Search Input */
+.dashboard-search-input {
+  width: 100%;
+  padding: 12px 15px;
+  padding-right: 40px; /* Space for the clear button */
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.dashboard-search-input:focus {
+  border-color: #4e54c8;
+  box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.1);
+}
+
+/* Clear Search Button */
+.clear-search-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* Create Content Button */
+.create-content-btn {
+  white-space: nowrap;
+  padding: 12px 20px;
+  background-color: #000000;
+  color: white;
+  border-radius: 8px;
+  font-size: medium;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.create-content-btn:hover {
+  background-color: #535353;
+}
+
+/* QuickPostBox styling */
+.quick-post-box {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.quick-post-content {
+  width: 100%;
+}
+
+/* Input in QuickPostBox */
+.quick-post-box input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.quick-post-box input[type="text"]:focus {
+  border-color: #4e54c8;
+  box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.1);
+}
+
+/* Textarea styling */
+.quick-post-box textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  resize: none;
+  margin-top: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.quick-post-box textarea:focus {
+  border-color: #4e54c8;
+  box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.1);
+}
+
+/* File upload button styling */
+.file-upload-label {
+  cursor: pointer;
+  color: #666;
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.file-upload-label:hover {
+  background-color: #f0f0f0;
+}
+
+/* Action buttons styling */
+.post-action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.post-button,
+.cancel-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.post-button {
+  background-color: #4e54c8;
+  color: white;
+  flex-grow: 1;
+}
+
+.post-button:hover {
+  background-color: #3a3f99;
+}
+
+.cancel-button {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Image preview styling */
+.image-preview {
+  margin-top: 12px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 300px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.remove-image-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-image-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Navigation Tabs */
+.dashboard-nav-container {
+  margin-bottom: 20px;
+}
+
+.dashboard-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.dashboard-tabs span {
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.dashboard-tabs span:hover {
+  background-color: #f0f0f0;
+}
+
+.dashboard-tabs span.active {
+  background-color: #000000;
+  color: white;
+}
+
+/* Dashboard Section */
+.dashboard-section {
+  margin-bottom: 30px;
+}
+
+.dashboard-section h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add these styles to your Dashboard.css file */
+
+/* Profile Card Specific Styling */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  height: 320px; /* Set fixed height for consistency */
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card .card-image-container {
+  height: 180px; /* Fixed height for image container */
+  position: relative;
+  overflow: hidden;
+  background-color: #e8f4fc; /* Light blue background for profile cards */
+}
+
+.profile-card .card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-card .card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.profile-card .profile-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.profile-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.3;
+}
+
+.profile-card p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  flex-grow: 1; /* Allow description to grow and push "View Profile" to bottom */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-card .read-more {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  color: #4e54c8;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Fix the user grid display */
+.dashboard-section h3 + .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Improve blank profile placeholder */
+.profile-card .card-image-container .placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #e8f4fc;
+}
+
+.profile-card .card-image-container .placeholder svg {
+  width: 64px;
+  height: 64px;
+  color: #b0bec5;
+}
+
+/* Default profile avatar styling inside card */
+.profile-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto;
+  object-fit: cover;
+  border: 4px solid white;
+  position: relative;
+  bottom: -20px; /* Slightly overlap with content area */
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Repost Modal */
+.repost-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.repost-modal {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.repost-modal h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.repost-modal p {
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.repost-modal textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  resize: none;
+  min-height: 100px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.repost-modal textarea:focus {
+  border-color: #4e54c8;
+  box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.1);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.repost-button {
+  padding: 10px 20px;
+  background-color: #4e54c8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.repost-button:hover {
+  background-color: #3a3f99;
+}
+
+/* Loading State */
+.dashboard-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* No Content State */
+.no-content,
+.no-results {
+  text-align: center;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.no-content p,
+.no-results p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.create-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4e54c8;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.create-link:hover {
+  background-color: #3a3f99;
+}
+
+.clear-search-btn-text {
+  background: none;
+  border: none;
+  color: #4e54c8;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+
+/* Make the save and repost buttons not inherit the card's cursor */
+.dashboard-card .stats {
+  position: relative;
+}
+
+.dashboard-card .stat-item-clickable {
+  cursor: pointer !important;
+}
+
+.dashboard-card .stat-item-clickable:hover {
+  color: #4e54c8;
+}
+
+/* Ensure only the image and "Read More" are clickable */
+.dashboard-card .image-container,
+.dashboard-card .read-more-link {
+  cursor: pointer;
+}
+
+.dashboard-card .read-more-link:hover {
+  color: #4e54c8;
+}
+
+.dashboard-card .title-link {
+  cursor: pointer !important;
+}
+
+.dashboard-card .title-link:hover {
+  color: #4e54c8;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-search-container {
+    max-width: 100%;
+  }
+
+  .create-content-btn {
+    text-align: center;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
