@@ -95,12 +95,40 @@ router.post("/", verifyToken, upload.single("image"), async (req, res) => {
     
     // Parse extraFields
     let extraFields = {};
+    
+    // Option 1: If extraFields is provided as a JSON string
     if (req.body.extraFields) {
       try {
-        extraFields = JSON.parse(req.body.extraFields);
+        extraFields = typeof req.body.extraFields === 'string' 
+          ? JSON.parse(req.body.extraFields) 
+          : req.body.extraFields;
       } catch (e) {
         console.error("Error parsing extraFields:", e);
       }
+    } 
+    // Option 2: Extract fields from request body that aren't standard Content model fields
+    else {
+      // Create a list of fields that are part of the Content model (not extraFields)
+      const contentModelFields = ['contentType', 'visibility', 'title', 'image'];
+      
+      // Loop through all fields in the request body
+      Object.keys(req.body).forEach(key => {
+        // If the field is not part of the standard Content model fields, add it to extraFields
+        if (!contentModelFields.includes(key)) {
+          // Check if the value is a JSON string that needs parsing (arrays, objects)
+          try {
+            if (req.body[key] && 
+                (req.body[key].startsWith('[') || req.body[key].startsWith('{'))) {
+              extraFields[key] = JSON.parse(req.body[key]);
+            } else {
+              extraFields[key] = req.body[key];
+            }
+          } catch (e) {
+            // If parsing fails, use the original value
+            extraFields[key] = req.body[key];
+          }
+        }
+      });
     }
 
     // Create relative URL for the uploaded image
@@ -121,9 +149,9 @@ router.post("/", verifyToken, upload.single("image"), async (req, res) => {
     res.status(201).json({ message: "Content created", saved });
   } catch (err) {
     console.error("Create content error:", err.message);
-    res.status(500).json({ message: "Failed to create content" });
+    res.status(500).json({ message: "Failed to create content", error: err.message });
   }
-});
+})
 
 // For postman testing purposes
 router.post("/bulk", verifyToken, async (req, res) => {
