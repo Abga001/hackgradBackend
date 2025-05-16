@@ -557,7 +557,7 @@ const handleSave = async () => {
                 type="text" 
                 value={cvProfile.fullName || ''} 
                 onChange={(e) => handleInputChange('fullName', e.target.value)}
-                placeholder="e.g., John Doe"
+                placeholder="e.g., Steve Jobs"
               />
             </div>
             
@@ -612,7 +612,7 @@ const handleSave = async () => {
                   type="tel" 
                   value={cvProfile.contact?.phone || ''} 
                   onChange={(e) => handleInputChange('contact.phone', e.target.value)}
-                  placeholder="+1 234 567 890"
+                  placeholder="+44 234 567 890"
                 />
               </div>
             </div>
@@ -699,7 +699,7 @@ const handleSave = async () => {
                       type="text" 
                       value={job.location || ''} 
                       onChange={(e) => handleArrayItemChange('workExperience', index, 'location', e.target.value)}
-                      placeholder="e.g., New York, NY"
+                      placeholder="e.g., London, UK"
                     />
                   </div>
                 </div>

@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+/* In PomodoroTimer.css */
+.pomodoro {
+  background-color: inherit; /* Inherit from body */
+  min-height: 100vh; /* Make sure it fills the screen */
+  min-width: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Or use !important if necessary */
+body {
+  background-color: #1e212d !important;
+}
+
+body {
+  background-color: #1e212d;
+  /* color: #eabf9f; */
+  height: 100vh;
+  font-family: "Roboto Mono", monospace;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.5s ease;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Pomodoro main container */
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+/* Timer display */
+.timer {
+  font-size: 6em;
+  margin: 0.2em 0;
+  color: aliceblue;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Status message */
+.message {
+  font-size: 0.9em;
+  min-height: 1.3em;
+  margin-bottom: 0.5em;
+  opacity: 0.8;
+}
+
+/* Mode selection tabs */
+.mode-tabs {
+  display: flex;
+  margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.mode-tabs button {
+  background: none;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-family: "Roboto Mono", monospace;
+  color: #eabf9f;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-tabs button.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+}
+
+.mode-tabs button:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05);
+  opacity: 0.9;
+}
+
+/* Timer controls */
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.controls button {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-family: "Roboto Mono", monospace;
+  color: #eabf9f;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.controls button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Stats display */
+.stats {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Settings toggle */
+.settings-toggle {
+  margin: 1rem 0;
+}
+
+.settings-toggle button {
+  background: none;
+  border: 1px solid rgba(234, 191, 159, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: "Roboto Mono", monospace;
+  color: #eabf9f;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settings-toggle button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Settings panel */
+.settings-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #282c34;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.settings-panel h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.setting-item {
+  margin-bottom: 1.2rem;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-item label {
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
+
+.setting-item input[type="number"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  width: 50px;
+  color: #eabf9f;
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
+}
+
+.setting-item select {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  color: #eabf9f;
+  font-family: "Roboto Mono", monospace;
+  min-width: 100px;
+}
+
+.setting-item.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.setting-item.checkbox input {
+  margin-right: 0.8rem;
+  transform: scale(1.2);
+}
+
+.setting-item input[type="range"] {
+  width: 150px;
+  margin-left: 1rem;
+  accent-color: #eabf9f;
+}
+
+.setting-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.setting-controls button {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-family: "Roboto Mono", monospace;
+  color: #eabf9f;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.setting-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.setting-controls button[type="submit"] {
+  background-color: rgba(234, 191, 159, 0.2);
+}
+
+.setting-controls button[type="submit"]:hover {
+  background-color: rgba(234, 191, 159, 0.3);
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+select:focus {
+  outline: 2px solid rgba(234, 191, 159, 0.6);
+  outline-offset: 2px;
+}
+
+/* Make range inputs look better in Firefox */
+input[type="range"]::-moz-range-track {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  background-color: #eabf9f;
+  border: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .timer {
+    font-size: 5em;
+  }
+
+  .mode-tabs button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .controls button {
+    padding: 0.5rem 1rem;
+    min-width: 70px;
+  }
+
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .setting-item:not(.checkbox) label {
+    margin-bottom: 0.5rem;
+  }
+
+  .setting-item input[type="range"] {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}

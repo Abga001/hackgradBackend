@@ -17,6 +17,18 @@ import CVProfileEditor from "./Pages/CVProfileEditor"; // Import CV Profile Edit
 import CVProfileView from "./Pages/CVProfileView"; // Import CV Profile View
 import CVArchive from "./Pages/CVArchive"; // Import CV Archive component
 
+// New Tool Pages
+
+import CalculatorPage from "./Pages/Tools/Calculator"; // Calculator tool
+import WordCounterPage from "./Pages/Tools/WordCounter"; // Word Counter tool
+import FlashcardsPage from "./Pages/Tools/Flashcards"; // Flashcards tool
+import PomodoroTimerPage from "./Pages/Tools/PomodoroTimer"; // Pomodoro Timer tool
+import StudySchedulerPage from "./Pages/Tools/StudyScheduler"; // Study Scheduler tool
+import ToDoListPage from "./Pages/Tools/ToDoList"; // To-Do List tool
+import CalendarPage from "./Pages/Tools/Calendar"; // Calendar tool
+import AccountSettingsPage from "./Pages/Tools/AccountSettings"; // Account Settings tool
+import WageCalculatorPage from "./Pages/Tools/WageCalculator"; // Wage Calculator tool
+
 // Layout
 import Layout from "./components/Layout";
 
@@ -45,10 +57,24 @@ import {
   faEyeSlash, 
   faDownload,
   faArchive,
-  faFileAlt, faLightbulb, faCheckCircle, 
-  faUserTie, faShareAlt
+  faFileAlt, 
+  faLightbulb, 
+  faCheckCircle, 
+  faUserTie, 
+  faShareAlt,
+  faCalculator,
+  faFileWord,
+  faStopwatch,
+  faCalendarAlt,
+  faClipboardList,
+  faCog,
+  faMoneyBillWave,
+  faFlask,
+  faGraduationCap,
+  faBook
 } from '@fortawesome/free-solid-svg-icons';
 
+// Add all icons to the library
 library.add(
   faMagnifyingGlass, 
   faPenToSquare, 
@@ -61,8 +87,21 @@ library.add(
   faEyeSlash, 
   faDownload,
   faArchive,
-  faFileAlt, faLightbulb, faCheckCircle, 
-  faUserTie, faShareAlt
+  faFileAlt, 
+  faLightbulb, 
+  faCheckCircle, 
+  faUserTie, 
+  faShareAlt,
+  faCalculator,
+  faFileWord,
+  faStopwatch,
+  faCalendarAlt,
+  faClipboardList,
+  faCog,
+  faMoneyBillWave,
+  faFlask,
+  faGraduationCap,
+  faBook
 );
 
 // Contexts
@@ -71,7 +110,8 @@ export const UserContext = createContext();
 export const SearchContext = createContext();
 export const FollowingContext = createContext();
 export const ModalContext = createContext();
-export const CVContext = createContext(); // New context for CV Archive
+export const CVContext = createContext(); // CV Archive context
+export const ToolsContext = createContext(); // New context for Tools & Utilities
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -89,6 +129,10 @@ const App = () => {
   const [cvArchive, setCVArchive] = useState([]);
   const [activeCV, setActiveCV] = useState(null);
   const [refreshCVArchive, setRefreshCVArchive] = useState(false);
+  
+  // Tools state
+  const [activeToolTab, setActiveToolTab] = useState(null);
+  const [toolsData, setToolsData] = useState({});
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -193,57 +237,76 @@ const App = () => {
               refreshCVArchive,
               setRefreshCVArchive
             }}>
-              <ModalContext.Provider value={{ 
-                isCreateModalOpen, 
-                openCreateModal, 
-                closeCreateModal,
-                modalContentType,
-                setModalContentType
+              <ToolsContext.Provider value={{
+                activeToolTab,
+                setActiveToolTab,
+                toolsData,
+                setToolsData
               }}>
-                <Router>
-                  <ModalController>
-                    {/* Floating Create Content Modal */}
-                    <FloatingModal 
-                      isOpen={isCreateModalOpen} 
-                      onClose={closeCreateModal}
-                      title="Create New Content"
-                    >
-                      {isAuthenticated && isCreateModalOpen && (
-                        <CreateContent initialContentType={modalContentType} isModal={true} />
-                      )}
-                    </FloatingModal>
+                <ModalContext.Provider value={{ 
+                  isCreateModalOpen, 
+                  openCreateModal, 
+                  closeCreateModal,
+                  modalContentType,
+                  setModalContentType
+                }}>
+                  <Router>
+                    <ModalController>
+                      {/* Floating Create Content Modal */}
+                      <FloatingModal 
+                        isOpen={isCreateModalOpen} 
+                        onClose={closeCreateModal}
+                        title="Create New Content"
+                      >
+                        {isAuthenticated && isCreateModalOpen && (
+                          <CreateContent initialContentType={modalContentType} isModal={true} />
+                        )}
+                      </FloatingModal>
 
-                    <Routes>
-                      {/* Protected Routes inside Layout */}
-                      <Route path="/" element={<Layout />}>
-                        <Route index element={<ProtectedRoute element={<Dashboard />} />} />
-                        <Route path="dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
-                        <Route path="create" element={<ProtectedRoute element={<ModalAwareRoute element={<CreateContent />} path="/create" />} />} />
-                        <Route path="contents/:id" element={<ProtectedRoute element={<ContentPage />} />} />
-                        <Route path="edit/:id" element={<ProtectedRoute element={<ContentEdit />} />} />
-                        <Route path="profile" element={<ProtectedRoute element={<Profile />} />} />
-                        <Route path="profile/:profileId" element={<ProtectedRoute element={<UserProfile />} />} />
-                        <Route path="profile/edit" element={<ProtectedRoute element={<ProfileEdit />} />} />
-                        <Route path="messages" element={<ProtectedRoute element={<Inbox />} />} />
-                        <Route path="messages/:conversationId" element={<ProtectedRoute element={<Conversation />} />} />
-                        
-                        {/* CV Profile Routes */}
-                        <Route path="cv" element={<ProtectedRoute element={<CVProfileView />} />} />
-                        <Route path="cv/archive" element={<ProtectedRoute element={<CVArchive />} />} />
-                        <Route path="cv/edit" element={<ProtectedRoute element={<CVProfileEditor />} />} />
-                        <Route path="cv/edit/:id" element={<ProtectedRoute element={<CVProfileEditor />} />} />
-                        <Route path="cv/:profileId" element={<ProtectedRoute element={<CVProfileView />} />} />
-                        
-                        <Route path="*" element={<ProtectedRoute element={<NotFoundContent />} />} />
-                      </Route>
+                      <Routes>
+                        {/* Protected Routes inside Layout */}
+                        <Route path="/" element={<Layout />}>
+                          <Route index element={<ProtectedRoute element={<Dashboard />} />} />
+                          <Route path="dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+                          <Route path="create" element={<ProtectedRoute element={<ModalAwareRoute element={<CreateContent />} path="/create" />} />} />
+                          <Route path="contents/:id" element={<ProtectedRoute element={<ContentPage />} />} />
+                          <Route path="edit/:id" element={<ProtectedRoute element={<ContentEdit />} />} />
+                          <Route path="profile" element={<ProtectedRoute element={<Profile />} />} />
+                          <Route path="profile/:profileId" element={<ProtectedRoute element={<UserProfile />} />} />
+                          <Route path="profile/edit" element={<ProtectedRoute element={<ProfileEdit />} />} />
+                          <Route path="messages" element={<ProtectedRoute element={<Inbox />} />} />
+                          <Route path="messages/:conversationId" element={<ProtectedRoute element={<Conversation />} />} />
+                          
+                          {/* CV Profile Routes */}
+                          <Route path="cv" element={<ProtectedRoute element={<CVProfileView />} />} />
+                          <Route path="cv/archive" element={<ProtectedRoute element={<CVArchive />} />} />
+                          <Route path="cv/edit" element={<ProtectedRoute element={<CVProfileEditor />} />} />
+                          <Route path="cv/edit/:id" element={<ProtectedRoute element={<CVProfileEditor />} />} />
+                          <Route path="cv/:profileId" element={<ProtectedRoute element={<CVProfileView />} />} />
+                          
+                          {/* Tools & Utilities Routes */}
 
-                      {/* Public Routes */}
-                      <Route path="/login" element={<Login />} />
-                      <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} />} />
-                    </Routes>
-                  </ModalController>
-                </Router>
-              </ModalContext.Provider>
+                          <Route path="tools/calculator" element={<ProtectedRoute element={<CalculatorPage />} />} />
+                          <Route path="tools/word-counter" element={<ProtectedRoute element={<WordCounterPage />} />} />
+                          <Route path="tools/flashcards" element={<ProtectedRoute element={<FlashcardsPage />} />} />
+                          <Route path="tools/pomodoro-timer" element={<ProtectedRoute element={<PomodoroTimerPage />} />} />
+                          <Route path="tools/study-scheduler" element={<ProtectedRoute element={<StudySchedulerPage />} />} />
+                          <Route path="tools/todo-list" element={<ProtectedRoute element={<ToDoListPage />} />} />
+                          <Route path="tools/calendar" element={<ProtectedRoute element={<CalendarPage />} />} />
+                          <Route path="tools/accountsettings" element={<ProtectedRoute element={<AccountSettingsPage />} />} />
+                          <Route path="tools/wage-calculator" element={<ProtectedRoute element={<WageCalculatorPage />} />} />
+                          
+                          <Route path="*" element={<ProtectedRoute element={<NotFoundContent />} />} />
+                        </Route>
+
+                        {/* Public Routes */}
+                        <Route path="/login" element={<Login />} />
+                        <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} />} />
+                      </Routes>
+                    </ModalController>
+                  </Router>
+                </ModalContext.Provider>
+              </ToolsContext.Provider>
             </CVContext.Provider>
           </FollowingContext.Provider>
         </SearchContext.Provider>

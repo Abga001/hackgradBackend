@@ -1,5 +1,7 @@
+//Dashboard.js
+
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { searchService, contentService } from "../apiService";
 import { UserContext, ModalContext } from "../App";
 import "../styles/Dashboard.css";
@@ -134,7 +136,7 @@ const ImprovedDashboard = () => {
     event.stopPropagation(); // Prevent card click navigation
     
     if (!currentUser) {
-      // You can show a login prompt here
+      // Show login prompt
       navigate('/login');
       return;
     }
@@ -147,7 +149,7 @@ const ImprovedDashboard = () => {
       setRefreshCounter(prev => prev + 1);
     } catch (err) {
       console.error("Save error:", err);
-      // You could show an error toast here
+      // Show an error toast here
     } finally {
       setActionInProgress(null);
     }
@@ -158,7 +160,7 @@ const ImprovedDashboard = () => {
     event.stopPropagation(); // Prevent card click navigation
     
     if (!currentUser) {
-      // You can show a login prompt here
+      // Show a login prompt here
       navigate('/login');
       return;
     }
@@ -186,7 +188,7 @@ const ImprovedDashboard = () => {
       setRefreshCounter(prev => prev + 1);
     } catch (err) {
       console.error("Repost error:", err);
-      // You could show an error toast here
+      // Show an error toast here
     } finally {
       setActionInProgress(null);
     }
@@ -296,7 +298,7 @@ useEffect(() => {
   };
 
   fetchAll();
-}, [refreshCounter, currentPage, itemsPerPage, activeFilter]); // Added activeFilter as dependency
+}, [refreshCounter, currentPage, itemsPerPage, activeFilter]);
 
   // Function to handle page changes
   const handlePageChange = (page) => {
@@ -591,14 +593,22 @@ const handleCardClick = (type, id) => {
               onClick={() => handleCardClick("content", content._id)}
             >
               <img 
-                src={content.processedImage || "/default-content.gif"}
-                alt={content.processedTitle || "Content"} 
-                loading="lazy"
-                style={cardStyles.image}
-                onError={(e) => {
-                  console.log("Image failed to load:", e.target.src);
-                  e.target.src = "/default-content.gif";
-                }}
+  src={content.processedImage || "/default-content.gif"}
+  alt={content.processedTitle || "Content"} 
+  loading="lazy"
+  style={{
+    width: 'auto',         // Let width adjust automatically
+    maxWidth: '100%',      // Ensure it doesn't overflow
+    maxHeight: '100%',     // Ensure it doesn't overflow
+    height: 'auto',        // Let height adjust automatically
+    objectFit: 'contain',  // Maintain aspect ratio
+    margin: '0 auto',      // Center horizontally
+    display: 'block',       // Remove extra spacing
+  }}
+  onError={(e) => {
+    console.log("Image failed to load:", e.target.src);
+    e.target.src = "/default-content.gif";
+  }}
               />
             </div>
             
@@ -866,18 +876,6 @@ const renderPagination = () => {
         </div>
       </div>
 
-      {/* Debug information - uncomment when needed */}
-      {/* 
-      <div style={{ background: '#f8f8f8', padding: '10px', marginBottom: '20px', fontSize: '14px' }}>
-        <h4>Debug Information</h4>
-        <p>Total Database Records: {totalItems}</p>
-        <p>Current Page: {currentPage} of {totalPages}</p>
-        <p>Items Per Page: {itemsPerPage}</p>
-        <p>Visible Content Items: {filteredContents.length}</p>
-        <p>Filter: {activeFilter}</p>
-      </div>
-      */}
-
       {["All", "Projects", "Jobs", "Tutorials", "Posts", "Events", "Books", "Questions"].includes(activeFilter) && filteredContents.length > 0 && (
         <div className="dashboard-section">
           <h3>Content</h3>
@@ -932,18 +930,6 @@ const renderPagination = () => {
         </div>
       )}
 
-      {/* Debug menu with database info - uncomment when troubleshooting */}
-      {/*
-      <div className="debug-panel">
-        <h3>Debug Info</h3>
-        <p>Database records: {totalItems}</p>
-        <p>Showing: {filteredContents.length} items</p>
-        <p>API URL: http://localhost:3000/api/contents?page={currentPage}&limit={itemsPerPage}</p>
-        <button onClick={() => setRefreshCounter(prev => prev + 1)}>
-          Force Refresh
-        </button>
-      </div>
-      */}
     </div>
   );
 };

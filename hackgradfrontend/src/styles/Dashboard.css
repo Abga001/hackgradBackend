@@ -575,6 +575,38 @@
   color: #4e54c8;
 }
 
+/* Improved image container styling */
+.image-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid #eee;
+  background-color: #f8f8f8; /* Light background for image container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures the image covers the container */
+  /* object-position: center; Centers the image */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Optional: Add a subtle zoom effect on hover */
+.dashboard-card:hover .image-container img {
+  transform: scale(1.05);
+}
+
+/* Style for failed images */
+.failed-image {
+  opacity: 0.7;
+  filter: grayscale(1);
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .dashboard-header {

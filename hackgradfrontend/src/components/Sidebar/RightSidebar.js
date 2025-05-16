@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { contentService } from '../../apiService';
+// import { contentService } from '../../apiService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faClock, 
@@ -8,7 +8,15 @@ import {
   faCalendarAlt, 
   faCheckSquare, 
   faBook, 
-  faCog 
+  faCog,
+  faFileAlt,
+  faLightbulb,
+  faCalendar,
+  faClipboardList,
+  faUserCog,
+  faList,
+  faWordpress,
+  faBrain
 } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/RightSidebar.css';
 
@@ -268,88 +276,61 @@ const RightSidebar = () => {
     );
   };
 
-  // Render Tools and Utilities section
-  const renderToolsAndUtilities = () => {
-    const tools = [
-      { 
-        name: 'Pomodoro Timer', 
-        icon: <FontAwesomeIcon icon={faClock} />, 
-        link: '/tools/pomodoro' 
-      },
-      { 
-        name: 'Wage Calculator', 
-        icon: <FontAwesomeIcon icon={faCalculator} />, 
-        link: '/tools/wage-calculator' 
-      },
-      { 
-        name: 'Study Scheduler', 
-        icon: <FontAwesomeIcon icon={faBook} />, 
-        link: '/tools/study-scheduler' 
-      },
-      { 
-        name: 'To-Do List', 
-        icon: <FontAwesomeIcon icon={faCheckSquare} />, 
-        link: '/tools/to-do' 
-      },
-      { 
-        name: 'Calendar', 
-        icon: <FontAwesomeIcon icon={faCalendarAlt} />, 
-        link: '/tools/calendar' 
-      },
-      { 
-        name: 'Account Settings', 
-        icon: <FontAwesomeIcon icon={faCog} />, 
-        link: '/profile/edit' 
-      },
-    ];
+  // Updated Tools and Utilities section to match the image and file list
+  const tools = [
+    { name: 'AccountSettings', icon: faUserCog, link: '/tools/accountsettings' },
+    { name: 'Calculator', icon: faCalculator, link: '/tools/calculator' },
+    { name: 'Calendar', icon: faCalendar, link: '/tools/calendar' },
+    { name: 'Flashcards', icon: faBrain, link: '/tools/flashcards' },
+    { name: 'PomodoroTimer', icon: faClock, link: '/tools/pomodoro-timer' },
+    { name: 'StudyScheduler', icon: faClipboardList, link: '/tools/study-scheduler' },
+    { name: 'ToDoList', icon: faList, link: '/tools/todo-list' },
+    { name: 'WageCalculator', icon: faCalculator, link: '/tools/wage-calculator' },
+    { name: 'WordCounter', icon: faFileAlt, link: '/tools/word-counter' },
+  ];
 
-    return (
-      <div className="tools-grid">
+  return (
+     <div className="right-sidebar">
+    <div className="sidebar-section">
+      <h2 className="section-title">Highlights</h2>
+      
+      <div className="carousel-container">
+        {renderCurrentHighlight()}
+        
+        <div className="carousel-controls">
+          <button 
+            className="carousel-arrow prev"
+            onClick={() => navigateCarousel('prev')}
+            aria-label="Previous highlight"
+          >
+            &#10094;
+          </button>
+          <button 
+            className="carousel-arrow next"
+            onClick={() => navigateCarousel('next')}
+            aria-label="Next highlight"
+          >
+            &#10095;
+          </button>
+        </div>
+        
+        {renderIndicators(highlightIndex, highlights.length)}
+      </div>
+    </div>
+      
+    <div className="sidebar-section tools-section">
+      <h2 className="section-title">Tools & Utilities</h2>
+      <div className="tools-list">
         {tools.map((tool, index) => (
-          <Link key={index} to={tool.link} className="tool-card">
-            <div className="tool-icon">{tool.icon}</div>
-            <div className="tool-name">{tool.name}</div>
+          <Link key={index} to={tool.link} className="tool-link">
+            <FontAwesomeIcon icon={tool.icon} className="tool-icon" />
+            <span className="tool-name">{tool.name}</span>
           </Link>
         ))}
       </div>
-    );
-  };
-
-  return (
-    <div className="right-sidebar">
-      <div className="sidebar-section">
-        <h2 className="section-title">Highlights</h2>
-        
-        <div className="carousel-container">
-          {renderCurrentHighlight()}
-          
-          <div className="carousel-controls">
-            <button 
-              className="carousel-arrow prev"
-              onClick={() => navigateCarousel('prev')}
-              aria-label="Previous highlight"
-            >
-              &#10094;
-            </button>
-            <button 
-              className="carousel-arrow next"
-              onClick={() => navigateCarousel('next')}
-              aria-label="Next highlight"
-            >
-              &#10095;
-            </button>
-          </div>
-          
-          {renderIndicators(highlightIndex, highlights.length)}
-        </div>
-      </div>
-      
-      <div className="sidebar-section">
-        <h2 className="section-title">Tools & Utilities</h2>
-        {renderToolsAndUtilities()}
-      </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default RightSidebar;
