@@ -1,0 +1,9 @@
+# hackgradBackend/app.yaml
+runtime: nodejs16 # or newer version
+service: backend
+
+env_variables:
+  NODE_ENV: "production"
+  # Add your other environment variables here
+  # MONGODB_URI: 'your-mongodb-connection-string'
+  # JWT_SECRET: 'your-jwt-secret'

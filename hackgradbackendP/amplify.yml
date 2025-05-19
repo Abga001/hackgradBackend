@@ -1,0 +1,17 @@
+# hackgradBackend/amplify.yml
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - npm install
+        - npm run build # If you have a build step
+  artifacts:
+    baseDirectory: /
+    files:
+      - "**/*"
+    excludes:
+      - node_modules/**/*
+  cache:
+    paths:
+      - node_modules/**/*
